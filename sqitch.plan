@@ -3,3 +3,4 @@
 %uri=https://activimetrics.com/jmarca/forum_demo
 
 forum_schema 2017-10-31T19:30:47Z James E. Marca <james@activimetrics.com> # add schemas for forum example
+users [forum_schema] 2017-10-31T19:40:29Z James E. Marca <james@activimetrics.com> # Creates table to track our users.
