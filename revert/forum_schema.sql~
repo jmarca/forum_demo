@@ -1,7 +1,0 @@
--- Revert forum_demo:forum_schema from pg
-
-BEGIN;
-
--- XXX Add DDLs here.
-
-COMMIT;
