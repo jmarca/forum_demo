@@ -3,8 +3,8 @@ CREATE EXTENSION IF NOT EXISTS pgtap;
 RESET client_min_messages;
 
 BEGIN;
-SELECT no_plan();
--- SELECT plan(1);
+-- SELECT no_plan();
+SELECT plan(30);
 SET search_path TO forum_example,public;
 
 SELECT pass('Test users!');
@@ -43,6 +43,15 @@ SELECT col_isnt_pk ( 'forum_example','users', 'created_at','users.created_at isn
 SELECT col_type_is( 'forum_example','users', 'created_at', 'timestamp with time zone','users.created_at is timestamp with time zone' );
 SELECT col_not_null( 'forum_example','users', 'created_at','users.created_at is not null' );
 SELECT col_has_default('forum_example','users', 'created_at','users.created_at has default');
+
+-- test checks work okay
+
+PREPARE long_first_name AS insert INTO forum_example.users (first_name,last_name) values ('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA','Smith');
+PREPARE long_last_name  AS insert INTO forum_example.users (first_name,last_name) values ('Abby','AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
+select throws_ok('long_first_name','23514','new row for relation "users" violates check constraint "users_first_name_check"','should fail first name length check');
+select throws_ok('long_last_name', '23514','new row for relation "users" violates check constraint "users_last_name_check"', 'should fail last name length check');
+
 
 SELECT finish();
 ROLLBACK;
