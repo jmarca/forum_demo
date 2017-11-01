@@ -10,7 +10,7 @@ create table forum_example.users (
   first_name       text not null check (char_length(first_name) < 80),
   last_name        text check (char_length(last_name) < 80),
   about            text,
-  created_at       timestamp default now()
+  created_at       timestamp with time zone not null default now()
 );
 
 comment on table forum_example.users is 'A user of the forum.';
