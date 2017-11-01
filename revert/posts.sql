@@ -2,6 +2,6 @@
 
 BEGIN;
 
-drop table forum_example.post;
+drop table forum_example.posts;
 
 COMMIT;
