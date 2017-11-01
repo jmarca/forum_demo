@@ -8,18 +8,18 @@ SELECT no_plan();
 
 SELECT pass('Test user_functions!');
 
-SELECT has_function( 'forum_example','user_full_name',ARRAY['forum_example.users'],'has user_full_name function' );
+SELECT has_function( 'forum_example','users_full_name',ARRAY['forum_example.users'],'has users_full_name function' );
 
 SELECT function_lang_is(
-    'forum_example','user_full_name',ARRAY['forum_example.users'],
+    'forum_example','users_full_name',ARRAY['forum_example.users'],
     'sql'
 );
 SELECT function_returns(
-    'forum_example','user_full_name',ARRAY['forum_example.users'],
+    'forum_example','users_full_name',ARRAY['forum_example.users'],
     'text'
 );
 SELECT volatility_is(
-    'forum_example','user_full_name',ARRAY['forum_example.users'],
+    'forum_example','users_full_name',ARRAY['forum_example.users'],
     'stable'
 );
 
@@ -33,7 +33,7 @@ with
 \gset
 
 PREPARE fun_test AS
-   select forum_example.user_full_name(u) from forum_example.users u where u.id = :hermannid::bigint;
+   select forum_example.users_full_name(u) from forum_example.users u where u.id = :hermannid::bigint;
 
 
 select results_eq ('fun_test',ARRAY['Hermann Munster'],'concatenated first, last name'

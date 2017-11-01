@@ -4,7 +4,7 @@
 
 BEGIN;
 
-create function forum_example.user_latest_post(u forum_example.users) returns forum_example.posts as $$
+create function forum_example.users_latest_post(u forum_example.users) returns forum_example.posts as $$
   select post.*
   from forum_example.posts as post
   where post.author_id = u.id
@@ -12,7 +12,7 @@ create function forum_example.user_latest_post(u forum_example.users) returns fo
   limit 1
 $$ language sql stable;
 
-comment on function forum_example.user_latest_post(forum_example.users) is 'Get’s the latest post written by the user.';
+comment on function forum_example.users_latest_post(forum_example.users) is 'Get’s the latest post written by the user.';
 
 
 

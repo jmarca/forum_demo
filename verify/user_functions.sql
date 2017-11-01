@@ -2,6 +2,6 @@
 
 BEGIN;
 
-SELECT has_function_privilege('forum_example.user_full_name(forum_example.users)', 'execute');
+SELECT has_function_privilege('forum_example.users_full_name(forum_example.users)', 'execute');
 
 ROLLBACK;

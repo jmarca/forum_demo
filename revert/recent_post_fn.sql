@@ -2,6 +2,6 @@
 
 BEGIN;
 
-drop function forum_example.user_latest_post(forum_example.users);
+drop function forum_example.users_latest_post(forum_example.users);
 
 COMMIT;

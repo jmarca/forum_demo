@@ -4,7 +4,7 @@
 
 BEGIN;
 
-create function forum_example.post_summary(
+create function forum_example.posts_summary(
   post forum_example.posts,
   length int default 50,
   omission text default '…'
@@ -15,6 +15,6 @@ create function forum_example.post_summary(
   end
 $$ language sql stable;
 
-comment on function forum_example.post_summary(forum_example.posts, int, text) is 'A truncated version of the body for summaries.';
+comment on function forum_example.posts_summary(forum_example.posts, int, text) is 'A truncated version of the body for summaries.';
 
 COMMIT;

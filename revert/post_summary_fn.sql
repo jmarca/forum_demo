@@ -2,6 +2,6 @@
 
 BEGIN;
 
-drop forum_example.post_summary(forum_example.posts, int, text);
+drop function forum_example.posts_summary(forum_example.posts, int, text);
 
 COMMIT;

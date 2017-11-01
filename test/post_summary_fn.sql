@@ -6,20 +6,20 @@ BEGIN;
 SELECT no_plan();
 -- SELECT plan(1);
 
-SELECT pass('Test post_summary_fn!');
+SELECT pass('Test posts_summary_fn!');
 
-SELECT has_function( 'forum_example','post_summary',ARRAY['forum_example.posts','integer','text'],'has post_summary function' );
+SELECT has_function( 'forum_example','posts_summary',ARRAY['forum_example.posts','integer','text'],'has posts_summary function' );
 
 SELECT function_lang_is(
-    'forum_example','post_summary',ARRAY['forum_example.posts','integer','text'],
+    'forum_example','posts_summary',ARRAY['forum_example.posts','integer','text'],
     'sql'
 );
 SELECT function_returns(
-    'forum_example','post_summary',ARRAY['forum_example.posts','integer','text'],
+    'forum_example','posts_summary',ARRAY['forum_example.posts','integer','text'],
     'text'
 );
 SELECT volatility_is(
-    'forum_example','post_summary',ARRAY['forum_example.posts','integer','text'],
+    'forum_example','posts_summary',ARRAY['forum_example.posts','integer','text'],
     'stable'
 );
 
@@ -41,13 +41,13 @@ with
 \gset
 
 PREPARE fn_test AS
-   select forum_example.post_summary(posts) from forum_example.posts posts where posts.id = :postid::bigint;
+   select forum_example.posts_summary(posts) from forum_example.posts posts where posts.id = :postid::bigint;
 
 PREPARE fn_test_set_length AS
-   select forum_example.post_summary(posts,10) from forum_example.posts posts where posts.id = :postid::bigint;
+   select forum_example.posts_summary(posts,10) from forum_example.posts posts where posts.id = :postid::bigint;
 
 PREPARE fn_test_set_omission AS
-   select forum_example.post_summary(posts,50,'more') from forum_example.posts posts where posts.id = :postid::bigint;
+   select forum_example.posts_summary(posts,50,'more') from forum_example.posts posts where posts.id = :postid::bigint;
 
 
 select results_eq ('fn_test',ARRAY['This is the body, and less than fifty characters.…'],'summarized the body'

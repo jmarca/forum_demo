@@ -2,6 +2,6 @@
 
 BEGIN;
 
-drop function forum_example.user_full_name(forum_example.users);
+drop function forum_example.users_full_name(forum_example.users);
 
 COMMIT;
