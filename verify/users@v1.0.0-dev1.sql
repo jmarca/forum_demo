@@ -2,7 +2,7 @@
 
 BEGIN;
 
-SELECT id, first_name, last_name, about, created_at, updated_at
+SELECT id, first_name, last_name, about, created_at
   FROM forum_example.users
  WHERE FALSE;
 
