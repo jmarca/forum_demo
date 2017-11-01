@@ -7,3 +7,4 @@ users [forum_schema] 2017-10-31T19:40:29Z James E. Marca <james@activimetrics.co
 post_topic [forum_schema] 2017-10-31T21:34:46Z James E. Marca <james@activimetrics.com> # Creates type for post topics.
 posts [forum_schema post_topic] 2017-10-31T22:28:02Z James E. Marca <james@activimetrics.com> # Creates table for posts.
 user_functions [forum_schema users] 2017-11-01T18:01:51Z James E. Marca <james@activimetrics.com> # Utility functions for users.
+post_summary_fn [forum_schema posts] 2017-11-01T18:58:59Z James E. Marca <james@activimetrics.com> # Post summary function
