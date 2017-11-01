@@ -10,3 +10,4 @@ user_functions [forum_schema users] 2017-11-01T18:01:51Z James E. Marca <james@a
 post_summary_fn [forum_schema posts] 2017-11-01T18:58:59Z James E. Marca <james@activimetrics.com> # Post summary function
 recent_post_fn [forum_schema posts] 2017-11-01T19:51:27Z James E. Marca <james@activimetrics.com> # Recent post function
 search_posts_fn [forum_schema posts] 2017-11-01T22:02:39Z James E. Marca <james@activimetrics.com> # Search posts function
+@v1.0.0-dev1 2017-11-01T22:31:59Z James E. Marca <james@activimetrics.com> # Tag v1.0.0-dev1.
