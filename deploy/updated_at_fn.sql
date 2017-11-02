@@ -5,7 +5,7 @@ BEGIN;
 
 create function forum_example_private.set_updated_at() returns trigger as $$
 begin
-  new.updated_at := current_timestamp;
+  new.updated_at := statement_timestamp();
   return new;
 end;
 $$ language plpgsql;
