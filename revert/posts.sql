@@ -1,9 +1,7 @@
--- Deploy forum_demo:posts to pg
--- requires: forum_schema
--- requires: post_topic
+-- Revert forum_demo:posts from pg
 
 BEGIN;
 
-alter table forum_example.posts drop column updated_at;
+drop table forum_example.posts;
 
 COMMIT;
