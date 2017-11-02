@@ -14,3 +14,5 @@ updated_at_fn [forum_schema] 2017-11-02T00:23:04Z James E. Marca <james@activime
 users_trigger_updated [forum_schema updated_at_fn users] 2017-11-02T00:53:57Z James E. Marca <james@activimetrics.com> # set trigger function update timestamp
 posts_trigger_updated [forum_schema updated_at_fn posts] 2017-11-02T00:54:19Z James E. Marca <james@activimetrics.com> # set trigger function for posts update timestamp
 accounts [forum_schema users] 2017-11-02T04:33:09Z James E. Marca <james@activimetrics.com> # tables for emails, passwords
+pgcrypto 2017-11-02T05:32:40Z James E. Marca <james@activimetrics.com> # pgcrypto
+register_user [forum_schema users accounts] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
