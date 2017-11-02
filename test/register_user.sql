@@ -22,6 +22,12 @@ SELECT volatility_is(
     'forum_example','register_user',ARRAY['text','text','text','text'],
     'volatile'
 );
+SELECT is_strict(
+    'forum_example','register_user',ARRAY['text','text','text','text']
+);
+SELECT is_definer(
+    'forum_example','register_user',ARRAY['text','text','text','text']
+);
 
 
 prepare insert_statement as select forum_example.register_user('hermann','munster','hm@munsters.com','it was a crushing bore');
