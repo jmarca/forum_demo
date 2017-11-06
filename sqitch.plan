@@ -16,4 +16,3 @@ posts_trigger_updated [forum_schema updated_at_fn posts] 2017-11-02T00:54:19Z Ja
 accounts [forum_schema users] 2017-11-02T04:33:09Z James E. Marca <james@activimetrics.com> # tables for emails, passwords
 pgcrypto 2017-11-02T05:32:40Z James E. Marca <james@activimetrics.com> # pgcrypto
 register_user [forum_schema users accounts] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
-runtime_roles [forum_schema] 2017-11-02T16:58:18Z James E. Marca <james@activimetrics.com> # database roles
