@@ -16,3 +16,5 @@ posts_trigger_updated [forum_schema updated_at_fn posts] 2017-11-02T00:54:19Z Ja
 accounts [forum_schema users] 2017-11-02T04:33:09Z James E. Marca <james@activimetrics.com> # tables for emails, passwords
 pgcrypto 2017-11-02T05:32:40Z James E. Marca <james@activimetrics.com> # pgcrypto
 register_user [forum_schema users accounts] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
+jwt_token_type 2017-11-06T20:53:17Z James E. Marca <james@activimetrics.com> # jwt token type
+authenticate_fn [postgraphql_roles:forum_user_role accounts forum_schema jwt_token_type] 2017-11-06T21:32:54Z James E. Marca <james@activimetrics.com> # authentication function for logins

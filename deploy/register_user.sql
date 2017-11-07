@@ -6,28 +6,29 @@
 BEGIN;
 
 create function forum_example.register_user(
-  first_name text,
-  last_name text,
-  email text,
-  password text
+  in_first_name text,
+  in_last_name text,
+  in_email text,
+  in_password text
 ) returns forum_example.users as $$
 declare
-  users forum_example.users;
+  newuser forum_example.users;
 begin
   with
-    newuser  as (
+    inserteduser  as (
       insert into forum_example.users (first_name, last_name) values
-        (first_name, last_name)
+        ($1, $2)
         returning *),
-    newaccount as (
+    insertedaccount as (
       insert into forum_example_private.user_account (user_id, email, password_hash)
-      select newuser.id, email, crypt(password, gen_salt('bf'))
-      from newuser
+      select inserteduser.id, $3, crypt($4, gen_salt('bf'))
+      from inserteduser
+      returning *
     )
-    select * from newuser
-    into users;
+  select * from inserteduser
+  into newuser;
 
-  return users;
+  return newuser;
 end;
 $$ language plpgsql strict security definer;
 

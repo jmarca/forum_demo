@@ -30,6 +30,9 @@ SELECT is_definer(
 );
 
 
+-- scratch
+
+
 prepare insert_statement as select forum_example.register_user('hermann','munster','hm@munsters.com','it was a crushing bore');
 
 select lives_ok('insert_statement','able to insert user and create account');
