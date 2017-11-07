@@ -18,7 +18,7 @@ begin
   where a.email = $1;
 
   if account.password_hash = crypt(password, account.password_hash) then
-    return ('forum_example_user', account.user_id)::forum_example.jwt_token;
+    return ('forum_user', account.user_id)::forum_example.jwt_token;
   else
     return null;
   end if;

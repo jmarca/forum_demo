@@ -35,15 +35,27 @@ with newuser as ( select * from forum_example.register_user('hermann','munster',
 select id as hmid from newuser
 \gset
 
-
 prepare auth_statement as select forum_example.authenticate('hm@munsters.com','it was a crushing bore');
+prepare expected_result as select ('forum_user',:hmid::bigint)::forum_example.jwt_token;
 
-select ('forum_example_user',:hmid::bigint)::forum_example.jwt_token as tokenish
-\gset
+
+prepare noauth_statement as select forum_example.authenticate('hm@munsters.com','the addams family suxs');
+prepare expected_nonresult as select (null)::forum_example.jwt_token;
+
+
 
 SELECT results_eq(
     'auth_statement',
-    :tokenish::forum_example.jwt_token
+    'expected_result',
+    'log in okay with valid password'
 );
+
+SELECT results_eq(
+    'noauth_statement',
+    'expected_nonresult',
+    'get nada back with bad password'
+);
+
+
 SELECT finish();
 ROLLBACK;
