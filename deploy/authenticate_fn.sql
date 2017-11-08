@@ -27,4 +27,6 @@ $$ language plpgsql strict security definer;
 
 comment on function forum_example.authenticate(text, text) is 'Creates a JWT token that will securely identify a user and give them certain permissions.';
 
+grant execute on function forum_example.authenticate(text, text) to forum_anonymous, forum_user;
+
 COMMIT;

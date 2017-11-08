@@ -12,4 +12,6 @@ $$ language sql stable;
 
 comment on function forum_example.search_posts(text) is 'Returns posts containing a given search term.';
 
+grant execute on function forum_example.search_posts(text) to forum_anonymous, forum_user;
+
 COMMIT;

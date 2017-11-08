@@ -25,5 +25,9 @@ comment on column forum_example.posts.body is 'The main body text of our post.';
 comment on column forum_example.posts.updated_at is 'The time this post was last modified.';
 comment on column forum_example.posts.created_at is 'The time this post was created.';
 
+grant select on table forum_example.posts to forum_anonymous, forum_user;
+grant insert, update, delete on table forum_example.posts to forum_user;
+grant usage on sequence forum_example.posts_id_seq to forum_user;
+
 
 COMMIT;

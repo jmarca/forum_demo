@@ -34,4 +34,6 @@ $$ language plpgsql strict security definer;
 
 comment on function forum_example.register_user(text, text, text, text) is 'Registers a single user and creates an account in our forum.';
 
+grant execute on function forum_example.register_user(text, text, text, text) to forum_anonymous;
+
 COMMIT;

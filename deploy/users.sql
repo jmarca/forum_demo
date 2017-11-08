@@ -22,4 +22,7 @@ comment on column forum_example.users.about is 'A short description about the us
 comment on column forum_example.users.updated_at is 'The time this user’s details were last modified.';
 comment on column forum_example.users.created_at is 'The time this user was created.';
 
+grant select on table forum_example.users to forum_anonymous, forum_user;
+grant update, delete on table forum_example.users to forum_user;
+
 COMMIT;

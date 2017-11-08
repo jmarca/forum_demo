@@ -15,4 +15,6 @@ $$ language sql stable;
 
 comment on function forum_example.current_user() is 'Gets the user who was identified by our JWT.';
 
+grant execute on function forum_example.current_user() to forum_anonymous, forum_user;
+
 COMMIT;

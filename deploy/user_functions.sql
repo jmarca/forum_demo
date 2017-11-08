@@ -10,4 +10,6 @@ $$ language sql stable;
 
 comment on function forum_example.users_full_name(forum_example.users) is 'A user’s full name which is a concatenation of their first and last name.';
 
+grant execute on function forum_example.users_full_name(forum_example.users) to forum_anonymous, forum_user;
+
 COMMIT;

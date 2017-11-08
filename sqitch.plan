@@ -2,21 +2,21 @@
 %project=forum_demo
 %uri=https://activimetrics.com/jmarca/forum_demo
 
-forum_schema 2017-10-31T19:30:47Z James E. Marca <james@activimetrics.com> # add schemas for forum example
+forum_schema [postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-10-31T19:30:47Z James E. Marca <james@activimetrics.com> # add schemas for forum example
 revoke_function_permissions 2017-11-08T16:13:59Z James E. Marca <james@activimetrics.com> # revoke execute permissions from public for functions
-users [forum_schema] 2017-10-31T19:40:29Z James E. Marca <james@activimetrics.com> # Creates table to track our users.
+users [forum_schema postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-10-31T19:40:29Z James E. Marca <james@activimetrics.com> # Creates table to track our users.
 post_topic [forum_schema] 2017-10-31T21:34:46Z James E. Marca <james@activimetrics.com> # Creates type for post topics.
-posts [forum_schema post_topic] 2017-10-31T22:28:02Z James E. Marca <james@activimetrics.com> # Creates table for posts.
-user_functions [forum_schema users] 2017-11-01T18:01:51Z James E. Marca <james@activimetrics.com> # Utility functions for users.
-post_summary_fn [forum_schema posts] 2017-11-01T18:58:59Z James E. Marca <james@activimetrics.com> # Post summary function
-recent_post_fn [forum_schema posts] 2017-11-01T19:51:27Z James E. Marca <james@activimetrics.com> # Recent post function
-search_posts_fn [forum_schema posts] 2017-11-01T22:02:39Z James E. Marca <james@activimetrics.com> # Search posts function
+posts [forum_schema post_topic postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-10-31T22:28:02Z James E. Marca <james@activimetrics.com> # Creates table for posts.
+user_functions [forum_schema users postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-11-01T18:01:51Z James E. Marca <james@activimetrics.com> # Utility functions for users.
+post_summary_fn [forum_schema posts postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-11-01T18:58:59Z James E. Marca <james@activimetrics.com> # Post summary function
+recent_post_fn [forum_schema posts postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-11-01T19:51:27Z James E. Marca <james@activimetrics.com> # Recent post function
+search_posts_fn [forum_schema posts postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-11-01T22:02:39Z James E. Marca <james@activimetrics.com> # Search posts function
 updated_at_fn [forum_schema] 2017-11-02T00:23:04Z James E. Marca <james@activimetrics.com> # function to get update timestamp
 users_trigger_updated [forum_schema updated_at_fn users] 2017-11-02T00:53:57Z James E. Marca <james@activimetrics.com> # set trigger function update timestamp
 posts_trigger_updated [forum_schema updated_at_fn posts] 2017-11-02T00:54:19Z James E. Marca <james@activimetrics.com> # set trigger function for posts update timestamp
 accounts [forum_schema users] 2017-11-02T04:33:09Z James E. Marca <james@activimetrics.com> # tables for emails, passwords
 pgcrypto 2017-11-02T05:32:40Z James E. Marca <james@activimetrics.com> # pgcrypto
-register_user [forum_schema users accounts] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
+register_user [forum_schema users accounts postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
 jwt_token_type 2017-11-06T20:53:17Z James E. Marca <james@activimetrics.com> # jwt token type
-authenticate_fn [postgraphql_roles:forum_user_role accounts forum_schema jwt_token_type] 2017-11-06T21:32:54Z James E. Marca <james@activimetrics.com> # authentication function for logins
-current_user_fn [postgraphql_roles:forum_user_role accounts forum_schema authenticate_fn jwt_token_type] 2017-11-07T20:00:27Z James E. Marca <james@activimetrics.com> # get current user from jwt token contents
+authenticate_fn [postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role accounts forum_schema jwt_token_type] 2017-11-06T21:32:54Z James E. Marca <james@activimetrics.com> # authentication function for logins
+current_user_fn [postgraphql_roles:forum_user_role postgraphql_roles:anonymous_role accounts forum_schema authenticate_fn jwt_token_type] 2017-11-07T20:00:27Z James E. Marca <james@activimetrics.com> # get current user from jwt token contents

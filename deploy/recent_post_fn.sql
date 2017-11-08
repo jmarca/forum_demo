@@ -14,6 +14,7 @@ $$ language sql stable;
 
 comment on function forum_example.users_latest_post(forum_example.users) is 'Get’s the latest post written by the user.';
 
+grant execute on function forum_example.users_latest_post(forum_example.users) to forum_anonymous, forum_user;
 
 
 COMMIT;

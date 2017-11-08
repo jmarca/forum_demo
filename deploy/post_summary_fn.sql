@@ -15,6 +15,8 @@ create function forum_example.posts_summary(
   end
 $$ language sql stable;
 
-comment on function forum_example.posts_summary(forum_example.posts, int, text) is 'A truncated version of the body for summaries.';
+comment on function forum_example.posts_summary(forum_example.posts, integer, text) is 'A truncated version of the body for summaries.';
+
+grant execute on function forum_example.posts_summary(forum_example.posts, integer, text) to forum_anonymous, forum_user;
 
 COMMIT;
