@@ -18,3 +18,4 @@ pgcrypto 2017-11-02T05:32:40Z James E. Marca <james@activimetrics.com> # pgcrypt
 register_user [forum_schema users accounts] 2017-11-02T05:38:03Z James E. Marca <james@activimetrics.com> # function to create user and account
 jwt_token_type 2017-11-06T20:53:17Z James E. Marca <james@activimetrics.com> # jwt token type
 authenticate_fn [postgraphql_roles:forum_user_role accounts forum_schema jwt_token_type] 2017-11-06T21:32:54Z James E. Marca <james@activimetrics.com> # authentication function for logins
+current_user_fn [postgraphql_roles:forum_user_role accounts forum_schema authenticate_fn jwt_token_type] 2017-11-07T20:00:27Z James E. Marca <james@activimetrics.com> # get current user from jwt token contents
