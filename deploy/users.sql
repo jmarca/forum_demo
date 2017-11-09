@@ -25,4 +25,15 @@ comment on column forum_example.users.created_at is 'The time this user was crea
 grant select on table forum_example.users to forum_anonymous, forum_user;
 grant update, delete on table forum_example.users to forum_user;
 
+alter table forum_example.users enable row level security;
+create policy select_users on forum_example.users for select
+  using (true);
+
+create policy update_users on forum_example.users for update to forum_user
+  using (id = current_setting('jwt.claims.user_id')::integer);
+create policy delete_users on forum_example.users for delete to forum_user
+  using (id = current_setting('jwt.claims.user_id')::integer);
+
+
+
 COMMIT;

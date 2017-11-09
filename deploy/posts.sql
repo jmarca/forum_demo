@@ -29,5 +29,18 @@ grant select on table forum_example.posts to forum_anonymous, forum_user;
 grant insert, update, delete on table forum_example.posts to forum_user;
 grant usage on sequence forum_example.posts_id_seq to forum_user;
 
+alter table forum_example.posts enable row level security;
+create policy select_posts on forum_example.posts for select
+  using (true);
+
+create policy insert_post on forum_example.posts for insert to forum_user
+  with check (author_id = current_setting('jwt.claims.user_id')::integer);
+
+create policy update_post on forum_example.posts for update to forum_user
+  using (author_id = current_setting('jwt.claims.user_id')::integer);
+
+create policy delete_post on forum_example.posts for delete to forum_user
+  using (author_id = current_setting('jwt.claims.user_id')::integer);
+
 
 COMMIT;
